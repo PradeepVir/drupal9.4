@@ -8708,7 +8708,8 @@ body {
       flex-wrap: nowrap; } }
   .tb_sldr .quicktabs-tabs .nav-link {
     white-space: break-spaces;
-    border: none; }
+    border: none;
+    flex: 1 1 auto; }
     .tb_sldr .quicktabs-tabs .nav-link a {
       border: none;
       margin-bottom: 0;
