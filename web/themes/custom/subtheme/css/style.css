@@ -8699,12 +8699,15 @@ body {
   font-size: 18px;
   color: #7c8993; }
 .tb_sldr .quicktabs-tabs {
+  display: flex !important;
+  flex-direction: row;
   border-bottom: solid 2px #017fd5;
   margin-bottom: 20px; }
   @media (max-width: 991.98px) {
     .tb_sldr .quicktabs-tabs {
       flex-wrap: nowrap; } }
   .tb_sldr .quicktabs-tabs .nav-link {
+    white-space: break-spaces;
     border: none; }
     .tb_sldr .quicktabs-tabs .nav-link a {
       border: none;

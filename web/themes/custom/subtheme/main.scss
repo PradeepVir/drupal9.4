@@ -49,12 +49,15 @@ body {
       }
     }
     .quicktabs-tabs {
+      display: flex !important;
+      flex-direction: row;
       border-bottom: solid 2px $blue-border;
       margin-bottom: 20px;
       @include media-breakpoint-down(lg) { 
         flex-wrap: nowrap;
       }
       .nav-link {
+        white-space: break-spaces;
         border: none;
         a {
           border: none;
