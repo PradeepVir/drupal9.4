@@ -1,0 +1,53 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+  {%
+    set row_classes = [
+      default_row_class ? 'card',
+    ]
+  %}
+  <div{{ row.attributes.addClass(row_classes) }}>
+          <div class="card_head" style="width:100%;height:0; padding-top:50%;position:relative; min-height: 200px;">
+            <div class="str"><span></span><i class="bi bi-star-fill"></i></div>
+            <div class="prc border rounded border-white px-3">{{row.content['#row']._entity.field_conference_price.value}}</div>
+            <img src="{{file_url(row.content['#row']._entity.field_confrance_banner.entity.uri.value)}}" class="card-img-top" alt="" style="position:absolute; top:0; left:0; width:100%;" onerror="this.onerror=null;this.src='./../images/ef3-placeholder-image.jpg';">
+          </div>
+          
+          <div class="card-body p-0">
+            <div class="card_tx">
+              <h5 class="card-title">{{row.content['#row']._entity.title.value}}</h5>
+              <p class="card-text"><span><i class="bi bi-tags-fill"></i></span> {{row.content['#row']._entity.field_conference_type.getValue().0.target_id }}</p>
+              <p class="card-text"><span><i class="bi bi-calendar-week"></i></span> {{row.content['#row']._entity.field_conference_date.value}}</p>
+              <p class="card-text"><span class="loc"><i class="bi bi-geo-alt-fill"></i></span> {{row.content['#row']._entity.field_conference_location.value}}</p>
+            </div>
+            <div class="det_itm">
+              <ul class="list-group list-group-horizontal ">
+                <li class="list-group-item border-start-0"><a href=""><i class="bi bi-heart"></i></a></li>
+                <li class="list-group-item"><a href=""><i class="bi bi-cloud-arrow-down"></i></a></li>
+                <li class="list-group-item"><a href=""><i class="bi bi-share-fill"></i></a></li>
+                <li class="list-group-item flex-grow-1 text-center border-end-0"><a href="">View Details</a></li>
+              </ul>
+            </div>
+          </div>
+  </div>
+{% endfor %}
